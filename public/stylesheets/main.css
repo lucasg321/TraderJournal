@@ -1,0 +1,196 @@
+.border img{
+    width: 100%;
+
+}
+
+.indexul{
+    display: inline-block;
+}
+
+.indexli{
+    text-align: center;
+}
+
+.border{
+    padding: 0;
+}
+
+.border .caption-full{
+    padding: 15px;
+}
+
+#usernamePost{
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.card{
+    margin-bottom: 35px;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+.rowReg{
+    margin-bottom: -10px;
+}
+
+.container{
+    margin-top: 5px;
+}
+
+.user_avatar {
+	 /* width: 110px; 
+	 height: 70px;  */
+
+	display: inline-block;
+	vertical-align: middle;
+}
+.user_avatar img {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+	}
+
+
+/* #tradeInfo{
+    border: 2px solid #707070;
+} */
+
+#delete-form{
+    display: inline;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+#recent-title{
+    margin-bottom: 30px;
+}
+
+.form-style-8{
+	font-family: 'Open Sans Condensed', arial, sans;
+	width: 500px;
+	padding: 30px;
+	background: #FFFFFF;
+	margin: 45px auto;
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-moz-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
+	-webkit-box-shadow:  0px 0px 15px rgba(0, 0, 0, 0.22);
+
+}
+.form-style-8 h2{
+	background: #343a40;
+	text-transform: uppercase;
+	font-family: 'Open Sans Condensed', sans-serif;
+	color: #797979;
+	font-size: 18px;
+	font-weight: 100;
+	padding: 20px;
+	margin: -30px -30px 30px -30px;
+}
+.form-style-8 input[type="text"],
+.form-style-8 input[type="email"],
+.form-style-8 input[type="password"],
+.form-style-8 textarea,
+.form-style-8 select 
+{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	outline: none;
+	display: block;
+	width: 100%;
+	padding: 7px;
+	border: none;
+	border-bottom: 1px solid #ddd;
+	background: transparent;
+	margin-bottom: 15px;
+	font: 16px Arial, Helvetica, sans-serif;
+	height: 45px;
+}
+.form-style-8 textarea{
+	resize:none;
+	overflow: hidden;
+}
+.form-style-8 input[type="button"], 
+.form-style-8 input[type="submit"]{
+	-moz-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	-webkit-box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	box-shadow: inset 0px 1px 0px 0px #45D6D6;
+	background-color: #2CBBBB;
+	border: 1px solid #27A0A0;
+	display: inline-block;
+	cursor: pointer;
+	color: #FFFFFF;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 14px;
+	padding: 8px 18px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.form-style-8 input[type="button"]:hover, 
+.form-style-8 input[type="submit"]:hover {
+	background:linear-gradient(to bottom, #34CACA 5%, #30C9C9 100%);
+	background-color:#34CACA;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  #indexcard:hover {
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+    padding: 2px 16px;
+  }
+
+  .stats{
+      margin-bottom: 25px;
+  }
+
+  .stat:hover{
+    background-color: grey;
+    color: white;
+}
+
+
+.module {
+  min-height: 200px;
+  position: relative;
+}
+
+.come-in {
+  transform: translateY(170px);
+  animation: come-in 1.3s ease forwards;
+}
+.come-in:nth-child(odd) {
+  animation-duration: 0.6s;
+}
+.already-visible {
+  transform: translateY(0);
+  animation: none;
+}
+
+@keyframes come-in {
+  to { transform: translateY(0); }
+}
+
+.zoom {
+    transition: transform .2s; /* Animation */
+  }
+  
+  .zoom:hover {
+    transform: scale(1.07); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }

@@ -1,0 +1,57 @@
+<% include ../partials/header %>
+<div class="d-flex h-100">
+    <div class="m-auto" style="text-align: center;">
+        <h1>Upload a New Trade</h1>
+        <div style="width: 80%; margin: 30px auto;">
+    <form action="/trades" method="POST">
+        <div class="form-group">
+                <input class="form-control" type="text" name="username" placeholder="Title" required>
+             </div>  
+        <div class="form-group">
+            <input class="form-control" type="text" name="image" placeholder="Trade Image">
+         </div>  
+         <div class="form-group">
+                <input class="form-control" type="text" name="ticker" placeholder="Ticker Symbol">
+             </div>  
+             <div class="row">
+                    <div class="form-group col-md-6" style="text-align: left;">
+             <label for="Select1">Type:</label>
+             <select class="form-control" id="Select1" name="type">
+               <option>Long</option>
+               <option>Short</option>
+             </select>
+             </div>
+             <div class="form-group col-md-6" style="text-align: left;">
+                <label for="Select2">Win or Loss:</label>
+                <select class="form-control" id="Select2" name="winOrLoss">
+                  <option>Win</option>
+                  <option>Loss</option>
+                </select>
+                </div>
+            </div>
+                <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-md-4">
+                                <input class="form-control" type="number" min="0.00" step="0.01" name="avgOpen" placeholder="Open Price">
+                        </div>
+                        <div class="form-group col-md-4">
+                                <input class="form-control" type="number" min="0.00" step="0.01" name="avgClose" placeholder="Close Price">
+                        </div>   
+                        <div class="form-group col-md-4">
+                                <input class="form-control" type="number" min="0.00" step="0.01" name="stop" placeholder="Stop Price">
+                        </div>   
+                </div>
+                <div class="form-group">
+                        <textarea class="form-control" type="text" name="description" placeholder="Description" style="height: 130px"></textarea>
+                </div>  
+
+        <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block" style="margin-top: 30px;">Upload!</button>
+        </div>
+        
+    </form>
+            <a href="/trades">Go Back</a>
+        </div>
+
+    </div>
+</div>
+<% include ../partials/footer %>

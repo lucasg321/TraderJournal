@@ -1,0 +1,86 @@
+<% include ../partials/header %>
+
+<div class="container" style="text-align: center;">
+    <div class="container">
+        <h1 style="text-align: center;" class="display-1" id="recent-title">Recent Trades</h1> 
+        <ul class="indexul"><h5><li class="indexli">Share ideas</li></h5></ul> 
+        <ul class="indexul"><h5><li class="indexli">Receive feedback</li></h5></ul>
+        <ul class="indexul"><h5><li class="indexli">Improve</li></h5></ul>
+       <div style="text-align: center; background:">
+        <a class="btn btn-secondary" style="margin-top: 5px;" href="/trades/new">Journal Now!</a>
+        <p>
+            <form action="/trades" method="GET" class="form-inline">
+                <div class="form-group">
+                    <input type="text" name="search" placeholder="Search for ticker or title" class="form-control">
+                    <input type="submit" value="Search" class="btn btn-outline-primary">
+                </div>
+            </form>
+        </p>
+    </div>
+        <hr style="margin-bottom: 60px;">
+    </div>
+
+    <div id="main-trades" class="row text-center" style="display:flex; flex-wrap: wrap;">
+        <% trades.forEach(function(trade){ %>
+            <div class="col-md-4 col-sm-6 module">
+                <div class="thumbnail card" id="indexcard">
+                   <a style="padding: 5px 5px;" href="/trades/<%= trade._id %>"> <img id="indexcard" class="figure-img img-fluid rounded" src="<%= trade.image %>"> </a>
+                
+                <figcaption class="figure-caption">
+                        <h4 style="color: black;"><a href="/trades/<%= trade._id %>"><%= trade.username %> </a></h4>
+                </figcaption>
+                <p style="padding: 0 30px;">
+                        <%= trade.description.substring(0,53) %>...
+                </p>
+                <!-- <p>
+                    <a href="/trades/<%= trade._id %>" class="btn btn-sm btn-primary">View Trade</a>
+                </p> -->
+                </div>
+            </div>
+        <% }); %>
+        </div>
+</div>
+
+<script>
+    (function($) {
+
+        $.fn.visible = function(partial) {
+    
+    var $t            = $(this),
+        $w            = $(window),
+        viewTop       = $w.scrollTop(),
+        viewBottom    = viewTop + $w.height(),
+        _top          = $t.offset().top,
+        _bottom       = _top + $t.height(),
+        compareTop    = partial === true ? _bottom : _top,
+        compareBottom = partial === true ? _top : _bottom;
+  
+  return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+
+};
+  
+})(jQuery);
+
+var win = $(window);
+
+var allMods = $(".module");
+
+allMods.each(function(i, el) {
+var el = $(el);
+if (el.visible(true)) {
+  el.addClass("already-visible"); 
+} 
+});
+
+win.scroll(function(event) {
+
+allMods.each(function(i, el) {
+  var el = $(el);
+  if (el.visible(true)) {
+    el.addClass("come-in"); 
+  } 
+});
+
+});
+</script>
+ <% include ../partials/footer %>

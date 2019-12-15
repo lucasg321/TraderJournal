@@ -1,0 +1,42 @@
+<% include ../partials/header %>
+
+<div id="sign-log" class="d-flex h-100">
+        <div class="m-auto" style="text-align: center;">
+                <h1 id="signuptitle">Edit Profile</h1>
+                <div style="width: 95%; margin: 20px auto;">
+        <form action="/profiles/<%= user.id %>?_method=PUT" method="POST">
+            <div class="form-group">
+            <div class="row rowReg"> <label><h6>First Name:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="text" name="userfield[firstName]" placeholder="First Name" value="<%= user.firstName %>">
+            </div>
+            <div class="form-group">
+            <div class="row rowReg"> <label><h6>Last Name:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="text" name="userfield[lastName]" placeholder="Last Name" value="<%= user.lastName %>">
+            </div>
+            <div class="form-group">
+            <div class="row rowReg"> <label><h6>Username:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="text" name="userfield[username]" placeholder="Username" value="<%= user.username %>">
+            </div>          
+            <!-- <div class="form-group">
+            <div class="row rowReg"><label><h6>Password:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="text" name="password" placeholder="Password">
+            </div> -->
+            <div class="form-group">
+            <div class="row rowReg"><label><h6>Email:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="email" name="userfield[email]" placeholder="Email" value="<%= user.email %>">
+            </div>
+             <div class="form-group">
+            <div class="row rowReg"><label><h6>Profile Picture:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="text" name="userfield[profilePic]" placeholder="Profile Picture URL" value="<%= user.profilePic %>">
+            </div>
+
+            <div class="form-group">
+            <button class = "btn btn-info">Update</button>
+            </div>
+            <a href="javascript:history.back()"> Cancel</a>
+            </form>
+                </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

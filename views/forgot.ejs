@@ -1,0 +1,18 @@
+<% include ./partials/header %>
+
+<div id="sign-log" class="d-flex h-100">
+        <div class="m-auto" style="text-align: center;">
+<h1 style="margin-bottom: 20px;">Forgot Password</h1>
+<form action="/forgot" method="POST">
+    <div class="form-group">
+            <div class="row rowReg"> <label><h6>Email:</h6></label></div>
+    <input style="width: 300px;" class="form-control" type="email" name="email" placeholder="Email">
+</div>
+<div class="form-group">
+        <button type="submit" class="btn btn-info">Reset Password</button>
+    </div>
+    </form>
+    </div>
+    </div>
+
+<% include ./partials/footer %>

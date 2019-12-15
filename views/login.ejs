@@ -1,0 +1,28 @@
+<% include ./partials/header %>
+
+<div id="sign-log" class="d-flex h-100">
+        <div class="m-auto" style="text-align: center;">
+<h1 style="margin-bottom: 20px;">Login</h1>
+<form action="/login" method="POST">
+    <div class="form-group">
+            <div class="row rowReg"> <label><h6>Username:</h6></label></div>
+    <input style="width: 300px;" class="form-control" type="text" name="username" placeholder="Username">
+</div>
+<div class="form-group">
+        <div class="row rowReg"> <label><h6>Password:</h6></label></div>
+    <input style="width: 300px;" class="form-control" type="password" name="password" placeholder="Password">
+</div>
+<div class="form-group">
+    <button type="submit" class="btn btn-info">Login</button>
+</div>
+<div class="form-group">
+<a>Don't Have an Account? </a><a href="/register" id="canceltxt" onclick="closeForm()">Sign Up Here</a>
+</div>
+<div class="form-group">
+<a>Forgot your password? </a><a href="/forgot" id="canceltxt" onclick="closeForm()"> Reset Here</a>
+</div>
+</form>
+</div>
+</div>
+
+<% include ./partials/footer %>

@@ -1,0 +1,57 @@
+<% include ../partials/header %>
+<div class="d-flex h-100">
+    <div class="m-auto">
+        <h1>Edit Your Trade</h1>
+        <div style="width: 80%; margin: 30px auto;">
+    <form action="/trades/<%= trade._id %>?_method=PUT" method="POST">
+        <div class="form-group">
+            <input class="form-control" type="text" name="trade[username]" value="<%= trade.username %>">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" name="trade[image]" value="<%= trade.image %>">
+         </div>  
+         <div class="form-group">
+                <input class="form-control" type="text" name="trade[ticker]" value="<%= trade.ticker %>">
+             </div>  
+             <div class="row">
+                    <div class="form-group col-md-6">
+             <label for="Select1">Type:</label>
+             <select class="form-control" id="Select1" name="trade[type]" value="<%= trade.type %>">
+               <option>Long</option>
+               <option>Short</option>
+             </select>
+             </div>
+             <div class="form-group col-md-6">
+                <label for="Select2">Win or Loss:</label>
+                <select class="form-control" id="Select2" name="trade[winOrLoss]" value="<%= trade.winOrLoss %>">
+                  <option>Win</option>
+                  <option>Loss</option>
+                </select>
+                </div>
+            </div>
+                <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-md-4">
+                                <input class="form-control" type="text" name="trade[avgOpen]" value="<%= trade.avgOpen %>">
+                        </div>
+                        <div class="form-group col-md-4">
+                                <input class="form-control" type="text" name="trade[avgClose]" value="<%= trade.avgClose %>">
+                        </div>   
+                        <div class="form-group col-md-4">
+                                <input class="form-control" type="text" name="trade[stop]" value="<%= trade.stop %>">
+                        </div>   
+                </div>
+                <div class="form-group">
+                        <input class="form-control" type="text" name="trade[description]" value="<%= trade.description %>">
+                </div>  
+
+        <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block" style="margin-top: 30px;">Upload!</button>
+        </div>
+        
+    </form>
+            <a href="/trades">Go Back</a>
+        </div>
+
+    </div>
+</div>
+<% include ../partials/footer %>

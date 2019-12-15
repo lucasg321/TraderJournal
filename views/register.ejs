@@ -1,0 +1,46 @@
+<% include ./partials/header %>
+
+<div id="sign-log" class="d-flex h-100">
+        <div class="m-auto" style="text-align: center;">
+                <h1 id="signuptitle">Sign Up</h1>
+                <div style="width: 95%; margin: 20px auto;">
+        <form id="signupform" action="/register" method="POST">
+            <div class="form-group">
+            <div class="row rowReg"> <label><h6>First Name:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="text" name="firstName" placeholder="First Name">
+            </div>
+            <div class="form-group">
+            <div class="row rowReg"> <label><h6>Last Name:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="text" name="lastName" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+            <div class="row rowReg"> <label><h6>Username:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="text" name="username" placeholder="Username">
+            </div>          
+            <div class="form-group">
+            <div class="row rowReg"><label><h6>Password:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+            <div class="row rowReg"><label><h6>Email:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+            <div class="row rowReg"><label><h6>Confirm Email:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="email" name="emailConfirm" placeholder="Confirm Email">
+             </div>
+             <div class="form-group">
+            <div class="row rowReg"><label><h6>Profile Picture:</h6></label></div>
+            <input class="form-control" style="width: 300px;" type="text" name="profilePic" placeholder="Profile Picture URL">
+            </div>
+
+            <div class="form-group">
+            <button class = "btn btn-info">Sign Up</button>
+            </div>
+            <a>Already have an account? </a><a href="/login">Login Here</a>
+            </form>
+                </div>
+    </div>
+</div>
+
+<% include ./partials/footer %>

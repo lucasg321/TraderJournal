@@ -1,0 +1,186 @@
+<% include ../partials/header %>
+
+<div class="container">
+<div class="row">
+    <div class="col-md-2">
+        <h3 style="text-align: center;"><%= user.firstName + " " + user.lastName %></h3>
+        <img class="img-thumbnail zoom" style="margin-bottom: 40px; border-radius: 50%;" src="<%= user.profilePic %>" alt="user profile image">
+        
+        <% if(currentUser && user.username === currentUser.username){ %>
+        <a href="<%= user.id %>/edit">Edit Profile</a>
+        <% } %>
+    </div>
+    <div class="col-md-6" style="margin-top: 10px;">
+        <h3> <%= user.username %>'s Trades</h3>
+            
+        <form action="/profiles/<%= user.id %>" method="GET" class="form-inline">
+            <div class="form-group">
+                <input type="text" name="search" placeholder="Search for ticker or title" class="form-control">
+                <input type="submit" value="Search" class="btn btn-outline-primary">
+            </div>
+        </form>
+        
+        <hr>
+            <% trades.forEach(function(trade){ %>
+            <div class="card module" id="indexcard">
+                    <a href="/trades/<%= trade._id %>"><img class="img-thumbnail" src="<%= trade.image %>"></a>
+                 <a style="text-align: center; font-size: 1.10em;" href="/trades/<%= trade._id %>"> <%= trade.username %></a>
+            </div>
+            <p style="display: none;" id="winStat"><%= trade.winOrLoss %></p>
+            <p style="display: none;" id="type"><%= trade.type %></p>
+            <p style="display: none;" id="avgopen"><%= trade.avgOpen %></p>
+            <p style="display: none;" id="avgclose"><%= trade.avgClose %></p>
+            <p style="display: none;" id="stop"><%= trade.stop %></p>
+            <% }); %>
+            <!-- Todo - landing page responsive - profile edit -->
+        </div>
+        <script> //counts stats and stores them in variables to be printed later
+                var wins = 0;
+                var losses = 0;
+                var wlTracker = [];
+                var i = 0;                
+                var winPriceSumLong = 0;
+                var losePriceSumLong = 0;
+                var winPriceSumShort = 0;
+                var losePriceSumShort = 0;
+                var longwins = 0;
+                var shortwins = 0;
+                var shortlosses = 0;
+                var longlosses = 0;
+                var tradeCount = 0;
+                var avgWinLong = 0;
+                var avgLossLong = 0;
+                var avgWinShort = 0;
+                var avgLossShort = 0;
+                var avgClosePrice = 0;
+                var avgWinLoss = 0;               
+                var closePriceArray = [];
+                var tradeType = [];
+
+                //the wins and losses are stored in an array (2 for win and 3 for loss), also total wins and losses are icnremented
+                $('[id^=winStat]').each(function(){
+                    if($(this).text() === "Win"){
+                    wins ++;
+                    wlTracker[i]=2;
+                    } else if($(this).text() === "Loss") {
+                    losses ++;
+                    wlTracker[i]=3;
+                    }
+                    i++;
+                });
+
+                 i = 0;
+                //store all the closing prices into an array
+                $('[id^=avgclose]').each(function(){
+                    closePriceArray[i] = Number($(this).text());
+                    i++;
+                });
+                    i=0;
+                //store the type of trade: long or short, into an array
+                $('[id^=type]').each(function(){
+                    tradeType[i] = $(this).text();
+                    i++;
+                });
+
+                //using the TYPE (long or short), the CLOSE, WIN or LOSS, and now the OPEN price, can calculate averages
+                i=0;
+                $('[id^=avgopen]').each(function(){
+                    //var minus = Number($(this).text()) - Number($("#avgclose]").text());
+                    if(wlTracker[i] === 2){ //if a win occurred 
+                        if(tradeType[i] === "Long"){ //check for long trade and win
+                            winPriceSumLong += closePriceArray[i] - Number($(this).text());
+                            longwins++;
+                        } else if (tradeType[i] === "Short"){ //if short trade and win
+                            winPriceSumShort += Number($(this).text()) - closePriceArray[i];
+                            shortwins ++;
+                        }
+                    } else if(wlTracker[i] === 3) { //if a loss occurred
+                        if(tradeType[i] === "Long"){ //check for long trade and loss
+                            losePriceSumLong += closePriceArray[i] - Number($(this).text());
+                            longlosses ++;
+                        } else if (tradeType[i] === "Short"){ //if short trade and loss
+                            losePriceSumShort += Number($(this).text()) - closePriceArray[i]; 
+                            shortlosses ++;
+                        }
+                     }
+                    i++;
+                });
+                avgWinLong = winPriceSumLong/longwins;
+                avgLossLong = losePriceSumLong/longlosses;
+                avgWinShort = winPriceSumShort/shortwins;
+                avgLossShort = losePriceSumShort/shortlosses;
+
+                //avgRisk temp/sample
+                // var stopTotal = 0;
+                // var avgRisk = 0;
+                // //stop FIX THIS
+                // $('[id^=stop]').each(function(){
+                //     stopTotal += Number($(this).text());
+                //     tradeCount++;
+                // });
+                // avgRisk = stopTotal/tradeCount;
+            </script> 
+        <div class="col-md-4" style="margin-top: 10px;">
+            <h3 class="stats"> <%= user.username %>'s Statistics</h3>
+            <div class="list-group" id="tradeInfo">
+                    <li class="list-group-item stat"><strong>Total Wins: </Strong><span class="float-right"><script>document.write(wins)</script></span></li>
+                    <li class="list-group-item stat"><strong>Total Losses: </Strong><span class="float-right"><script>document.write(losses)</script></span></li>
+                    <li class="list-group-item stat"><strong>Win Percentage: </Strong><span class="float-right"><script>document.write((wins/(wins+losses)*100).toFixed(2))</script>% </span></li>
+                    <li class="list-group-item stat"><strong>Avg Long Win: </Strong><span class="float-right">$<script>document.write(avgWinLong.toFixed(2))</script> </span></li>
+                    <li class="list-group-item stat"><strong>Avg Long Loss: </Strong><span class="float-right">$<script>document.write(avgLossLong.toFixed(2))</script> </span></li>
+                    <li class="list-group-item stat"><strong>Avg Short Win: </Strong><span class="float-right">$<script>document.write(avgWinShort.toFixed(2))</script> </span></li>
+                    <li class="list-group-item stat"><strong>Avg Short Loss: </Strong><span class="float-right">$<script>document.write(avgLossShort.toFixed(2))</script> </span></li>
+
+                </div>
+
+            <hr>
+            <a style="margin-top: 10px;" class="btn btn-secondary" href="/trades/new">New Trade</a>
+           <!-- <h5 class="stats">Avg Risk: <script>document.write(avgRisk.toFixed(2))</script></h5>-->
+        </div>
+    </div>
+</div>
+
+<script>
+        (function($) {
+    
+            $.fn.visible = function(partial) {
+        
+        var $t            = $(this),
+            $w            = $(window),
+            viewTop       = $w.scrollTop(),
+            viewBottom    = viewTop + $w.height(),
+            _top          = $t.offset().top,
+            _bottom       = _top + $t.height(),
+            compareTop    = partial === true ? _bottom : _top,
+            compareBottom = partial === true ? _top : _bottom;
+      
+      return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
+    
+    };
+      
+    })(jQuery);
+    
+    var win = $(window);
+    
+    var allMods = $(".module");
+    
+    allMods.each(function(i, el) {
+    var el = $(el);
+    if (el.visible(true)) {
+      el.addClass("already-visible"); 
+    } 
+    });
+    
+    win.scroll(function(event) {
+    
+    allMods.each(function(i, el) {
+      var el = $(el);
+      if (el.visible(true)) {
+        el.addClass("come-in"); 
+      } 
+    });
+    
+    });
+    </script>
+
+<% include ../partials/footer %>

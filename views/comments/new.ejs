@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+<div class="d-flex h-100">
+    <div class="m-auto">
+        <h1>Add a New Comment</h1>
+        <div style="width: 80%; margin: 30px auto;">
+    <form action="/trades/<%= trade._id %>/comments" method="POST">
+        <div class="form-group">
+            <input class="form-control" type="text" name="comment[text]" placeholder="Text">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block" style="margin-top: 30px;">Upload!</button>
+        </div>
+    </form>
+            <a href="/trades">Go Back</a>
+        </div>
+
+    </div>
+</div>
+<% include ../partials/footer %>
