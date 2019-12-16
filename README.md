@@ -8,7 +8,7 @@ A website where stock, forex, or crypto enthusiasts can post their trades. They 
 HTML, CSS, Javascript, Node, Express, MongoDB
 
 ### Explanation:
-
+The goal of the website is to let finance enthusiasts track their trades with the goal of finding out what is profitable for themselves. Automatically calculated statistics are shown on each user's profile based on the trades they have made. These will guide users into finding what their strengths and weaknesses are, so they can be successful.
 
 ### How it works:
 
